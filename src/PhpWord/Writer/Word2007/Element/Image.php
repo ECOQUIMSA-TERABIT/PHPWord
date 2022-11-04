@@ -75,13 +75,23 @@ class Image extends AbstractElement
             $fontStyleWriter->write();
         }
 
-        $xmlWriter->startElement('w:pict');
+	$xmlWriter->startElement('w:pict');
         $xmlWriter->startElement('v:shape');
         $xmlWriter->writeAttribute('type', '#_x0000_t75');
-        $xmlWriter->writeAttribute('stroked', 'f');
+        $xmlWriter->writeAttribute('stroked', 't');
+        $xmlWriter->writeAttribute('strokeweight', '3pt');
 
         $styleWriter->write();
 
+        $xmlWriter->startElement('v:shadow');
+        $xmlWriter->writeAttribute('on', 't');
+        $xmlWriter->writeAttribute('type', 'single');
+        $xmlWriter->writeAttribute('obscured', 't');
+        $xmlWriter->writeAttribute('color', '#333333');
+        $xmlWriter->writeAttribute('offset', '3pt,3pt');
+        $xmlWriter->writeAttribute('opacity', '0.6');
+        $xmlWriter->writeAttribute('origin', '9pt,19pt');
+        $xmlWriter->endElement(); // v:shadow
         $xmlWriter->startElement('v:imagedata');
         $xmlWriter->writeAttribute('r:id', 'rId' . $rId);
         $xmlWriter->writeAttribute('o:title', '');
@@ -91,7 +101,7 @@ class Image extends AbstractElement
         $xmlWriter->endElement(); // w:pict
         $xmlWriter->endElement(); // w:r
 
-        $this->endElementP();
+	$this->endElementP();
     }
 
     /**
