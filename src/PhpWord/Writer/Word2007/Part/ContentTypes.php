@@ -57,7 +57,10 @@ class ContentTypes extends AbstractPart
             foreach ($contentTypes['override'] as $key => $val) {
                 if ($val == 'chart') {
                     $overrides[$key] = $drawingMLPrefix . $val . '+xml';
-                } else {
+                } elseif (str_contains($key, 'embeddings')) {
+                    $overrides[$key] = $val;
+                }
+                else {
                     $overrides[$key] = $wordMLPrefix . $val . '+xml';
                 }
             }
