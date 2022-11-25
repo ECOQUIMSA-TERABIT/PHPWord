@@ -53,14 +53,78 @@ class OLEObject extends AbstractElement
 
         $xmlWriter->startElement('w:r');
         $xmlWriter->startElement('w:object');
-        $xmlWriter->writeAttribute('w:dxaOrig', '249');
-        $xmlWriter->writeAttribute('w:dyaOrig', '160');
+        $xmlWriter->writeAttribute('w:dxaOrig', '16641');
+        $xmlWriter->writeAttribute('w:dyaOrig', '5888');
+
+        $xmlWriter->startElement('v:shapetype');
+        $xmlWriter->writeAttribute('id', '_x0000_t75');
+        $xmlWriter->writeAttribute('coordsize', '21600,21600');
+        $xmlWriter->writeAttribute('o:spt', $shapeId);
+        $xmlWriter->writeAttribute('o:preferrelative', 't');
+        $xmlWriter->writeAttribute('path', 'm@4@5l@4@11@9@11@9@5xe');
+        $xmlWriter->writeAttribute('filled', 'f');
+        $xmlWriter->writeAttribute('stroked', 'f');
+        $xmlWriter->startElement('v:stroke');
+        $xmlWriter->writeAttribute('joinstyle', 'miter');
+        $xmlWriter->endElement();
+        $xmlWriter->startElement('v:formulas');
+
+
+        $xmlWriter->startElement('v:f');
+        $xmlWriter->writeAttribute('eqn', 'if lineDrawn pixelLineWidth 0');
+        $xmlWriter->endElement();
+        $xmlWriter->startElement('v:f');
+        $xmlWriter->writeAttribute('eqn', 'sum @0 1 0');
+        $xmlWriter->endElement();
+        $xmlWriter->startElement('v:f');
+        $xmlWriter->writeAttribute('eqn', 'sum 0 0 @1');
+        $xmlWriter->endElement();
+        $xmlWriter->startElement('v:f');
+        $xmlWriter->writeAttribute('eqn', 'prod @2 1 2');
+        $xmlWriter->endElement();
+        $xmlWriter->startElement('v:f');
+        $xmlWriter->writeAttribute('eqn', 'prod @3 21600 pixelWidth');
+        $xmlWriter->endElement();
+        $xmlWriter->startElement('v:f');
+        $xmlWriter->writeAttribute('eqn', 'prod @3 21600 pixelHeight');
+        $xmlWriter->endElement();
+        $xmlWriter->startElement('v:f');
+        $xmlWriter->writeAttribute('eqn', 'sum @0 0 1');
+        $xmlWriter->endElement();
+        $xmlWriter->startElement('v:f');
+        $xmlWriter->writeAttribute('eqn', 'prod @6 1 2');
+        $xmlWriter->endElement();
+        $xmlWriter->startElement('v:f');
+        $xmlWriter->writeAttribute('eqn', 'prod @7 21600 pixelWidth');
+        $xmlWriter->endElement();
+        $xmlWriter->startElement('v:f');
+        $xmlWriter->writeAttribute('eqn', 'sum @8 21600 0');
+        $xmlWriter->endElement();
+        $xmlWriter->startElement('v:f');
+        $xmlWriter->writeAttribute('eqn', 'prod @7 21600 pixelHeight');
+        $xmlWriter->endElement();
+        $xmlWriter->startElement('v:f');
+        $xmlWriter->writeAttribute('eqn', 'sum @10 21600 0');
+        $xmlWriter->endElement();
+        $xmlWriter->fullEndElement();
+        $xmlWriter->startElement('v:path');
+        $xmlWriter->writeAttribute('o:extrusionok', 'f');
+        $xmlWriter->writeAttribute('gradientshapeok', 't');
+        $xmlWriter->writeAttribute('o:connecttype', 'rect');
+        $xmlWriter->endElement();
+
+        $xmlWriter->startElement('o:lock');
+        $xmlWriter->writeAttribute('v:ext', 'edit');
+        $xmlWriter->writeAttribute('aspectratio', 't');
+        $xmlWriter->endElement();
+        $xmlWriter->fullEndElement();
+
 
         // Icon
         $xmlWriter->startElement('v:shape');
         $xmlWriter->writeAttribute('id', $shapeId);
         $xmlWriter->writeAttribute('type', '#_x0000_t75');
-        $xmlWriter->writeAttribute('style', 'width:104px;height:67px');
+        $xmlWriter->writeAttribute('style', 'width:368.4pt;height:129.5pt');
         $xmlWriter->writeAttribute('o:ole', '');
 
         $xmlWriter->startElement('v:imagedata');
@@ -73,9 +137,9 @@ class OLEObject extends AbstractElement
         // Object
         $xmlWriter->startElement('o:OLEObject');
         $xmlWriter->writeAttribute('Type', 'Embed');
-        $xmlWriter->writeAttribute('ProgID', 'Package');
+        $xmlWriter->writeAttribute('ProgID', 'Excel.Sheet.12');
         $xmlWriter->writeAttribute('ShapeID', $shapeId);
-        $xmlWriter->writeAttribute('DrawAspect', 'Icon');
+        $xmlWriter->writeAttribute('DrawAspect', 'Content');
         $xmlWriter->writeAttribute('ObjectID', '_' . $objectId);
         $xmlWriter->writeAttribute('r:id', 'rId' . $rIdObject);
         $xmlWriter->endElement(); // o:OLEObject
