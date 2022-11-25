@@ -85,7 +85,7 @@ class Media
                     break;
                 // Objects
                 case 'object':
-                    $target = "{$container}_oleObject{$mediaTypeCount}.bin";
+                    $target = $source;
                     break;
                 // Links
                 case 'link':
