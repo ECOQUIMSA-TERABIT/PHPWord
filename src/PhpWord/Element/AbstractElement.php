@@ -402,8 +402,8 @@ abstract class AbstractElement
 
         if ($this instanceof OLEObject) {
             $icon = $this->getIcon();
-            $rId = Media::addElement($mediaPart, 'image', $icon, new Image($icon));
-            $this->setImageRelationId($rId);
+          //  $rId = Media::addElement($mediaPart, 'image', $icon, new Image($icon));
+            //$this->setImageRelationId($rId);
         }
     }
 
