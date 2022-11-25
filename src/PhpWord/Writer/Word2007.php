@@ -328,6 +328,7 @@ class Word2007 extends AbstractWriter implements WriterInterface
                 if (!isset($this->contentTypes['default']['bin'])) {
                     $this->contentTypes['default']['bin'] = 'application/vnd.openxmlformats-officedocument.oleObject';
                 }
+                $this->contentTypes['override']["/word/embeddings/". $medium['target']] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
             }
         }
     }
