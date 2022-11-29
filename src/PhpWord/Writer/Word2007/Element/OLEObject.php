@@ -53,8 +53,9 @@ class OLEObject extends AbstractElement
 
         $xmlWriter->startElement('w:r');
         $xmlWriter->startElement('w:object');
-        $xmlWriter->writeAttribute('w:dxaOrig', '16641');
-        $xmlWriter->writeAttribute('w:dyaOrig', '5888');
+        $xmlWriter->writeAttribute('w:dxaOrig', '15382');
+        $xmlWriter->writeAttribute('w:dyaOrig', '5771');
+        $xmlWriter->writeAttribute('w14:anchorId', '354C751A');
 
         $xmlWriter->startElement('v:shapetype');
         $xmlWriter->writeAttribute('id', '_x0000_t75');
@@ -124,7 +125,7 @@ class OLEObject extends AbstractElement
         $xmlWriter->startElement('v:shape');
         $xmlWriter->writeAttribute('id', $shapeId);
         $xmlWriter->writeAttribute('type', '#_x0000_t75');
-        $xmlWriter->writeAttribute('style', 'width:368.4pt;height:129.5pt');
+        $xmlWriter->writeAttribute('style', 'width:368.4pt;height:129.5pt;mso-wrap-distance-right:0pt');
         $xmlWriter->writeAttribute('o:ole', '');
 
         $xmlWriter->startElement('v:imagedata');
