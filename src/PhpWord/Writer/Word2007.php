@@ -85,7 +85,7 @@ class Word2007 extends AbstractWriter implements WriterInterface
         }
 
         // Set package paths
-        $this->mediaPaths = array('image' => 'word/media/', 'object' => 'word/embeddings/');
+        $this->mediaPaths = array('image' => 'word/media/', 'object' => 'word/embeddings');
     }
 
     /**
