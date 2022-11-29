@@ -326,9 +326,11 @@ class Word2007 extends AbstractWriter implements WriterInterface
                 }
             } elseif ($mediumType == 'object') {
                 if (!isset($this->contentTypes['default']['bin'])) {
-                    $this->contentTypes['default']['bin'] = 'application/vnd.openxmlformats-officedocument.oleObject';
+//                $this->contentTypes['override']["/word/embeddings/". $medium['target']] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
                 }
-                $this->contentTypes['override']["/word/embeddings/". $medium['target']] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+                if (!isset($this->contentTypes['default']['xlsx'])) {
+                    $this->contentTypes['default']['xlsx'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+                }
             }
         }
     }
