@@ -84,7 +84,7 @@ class Rels extends AbstractPart
     {
         $typePrefix = 'officeDocument/2006/relationships/';
         $typeMapping = array('image' => 'image', 'object' => 'package', 'link' => 'hyperlink');
-        $targetMapping = array('image' => 'media/', 'object' => 'embeddings/');
+        $targetMapping = array('image' => 'media/', 'object' => 'embeddings');
 
         $mediaType = $mediaRel['type'];
         $type = isset($typeMapping[$mediaType]) ? $typeMapping[$mediaType] : $mediaType;
