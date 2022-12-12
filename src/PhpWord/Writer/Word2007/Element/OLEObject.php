@@ -125,7 +125,7 @@ class OLEObject extends AbstractElement
         $xmlWriter->startElement('v:shape');
         $xmlWriter->writeAttribute('id', $shapeId);
         $xmlWriter->writeAttribute('type', '#_x0000_t75');
-        $xmlWriter->writeAttribute('style', 'width:368.4pt;height:129.5pt;mso-wrap-distance-right:0pt');
+        $xmlWriter->writeAttribute('style', 'width:668.4pt;height:229.5pt;mso-wrap-distance-right:0pt');
         $xmlWriter->writeAttribute('o:ole', '');
 
         $xmlWriter->startElement('v:imagedata');
