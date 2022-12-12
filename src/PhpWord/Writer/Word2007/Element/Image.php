@@ -79,7 +79,7 @@ class Image extends AbstractElement
         $xmlWriter->startElement('v:shape');
         $xmlWriter->writeAttribute('type', '#_x0000_t75');
         $xmlWriter->writeAttribute('stroked', 't');
-        $xmlWriter->writeAttribute('strokeweight', '3pt');
+        $xmlWriter->writeAttribute('strokeweight', '1.7pt');
 
         $styleWriter->write();
 
@@ -87,10 +87,10 @@ class Image extends AbstractElement
         $xmlWriter->writeAttribute('on', 't');
         $xmlWriter->writeAttribute('type', 'single');
         $xmlWriter->writeAttribute('obscured', 't');
-        $xmlWriter->writeAttribute('color', '#333333');
+        $xmlWriter->writeAttribute('color', '#DFDFDF');
         $xmlWriter->writeAttribute('offset', '3pt,3pt');
-        $xmlWriter->writeAttribute('opacity', '0.6');
-        $xmlWriter->writeAttribute('origin', '9pt,19pt');
+        $xmlWriter->writeAttribute('opacity', '0.7');
+        $xmlWriter->writeAttribute('origin', '0.5pt');
         $xmlWriter->endElement(); // v:shadow
         $xmlWriter->startElement('v:imagedata');
         $xmlWriter->writeAttribute('r:id', 'rId' . $rId);
