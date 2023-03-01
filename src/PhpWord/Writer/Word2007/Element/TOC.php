@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of PHPWord - A pure PHP library for reading and writing
  * word processing documents.
@@ -68,14 +69,24 @@ class TOC extends AbstractElement
      * @param \PhpOffice\PhpWord\Element\TOC $element
      * @param \PhpOffice\PhpWord\Element\Title $title
      * @param bool $writeFieldMark
+     * @param string $itemNumber
+     * @param bool $writeNewLineBefore
      */
-    private function writeTitle(XMLWriter $xmlWriter, TOCElement $element, $title, $writeFieldMark)
+    private function writeTitle(XMLWriter $xmlWriter, TOCElement $element, $title, $writeFieldMark, string $itemNumber, bool $writeNewLineBefore = false)
     {
         $tocStyle = $element->getStyleTOC();
         $fontStyle = $element->getStyleFont();
         $isObject = ($fontStyle instanceof Font) ? true : false;
         $rId = $title->getRelationId();
         $indent = ($title->getDepth() - 1) * $tocStyle->getIndent();
+
+        if ($writeNewLineBefore) {
+            // Add a new line character
+            $xmlWriter->startElement('w:p');
+            $xmlWriter->startElement('w:r');
+            $xmlWriter->endElement(); // w:r
+            $xmlWriter->endElement(); // w:p
+        }
 
         $xmlWriter->startElement('w:p');
 
