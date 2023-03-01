@@ -45,12 +45,17 @@ class TOC extends AbstractElement
 
         $titles = $element->getTitles();
         $writeFieldMark = true;
+        $numbering = $this->getNumbering($titles);
+        $counter = 0;
 
         foreach ($titles as $title) {
-            $this->writeTitle($xmlWriter, $element, $title, $writeFieldMark);
+            $currDepth = $title->getDepth();
+            // Write a new line before the title if it is not the first one and it's not a subtitle (AKA depth == 1)
+            $this->writeTitle($xmlWriter, $element, $title, $writeFieldMark, $numbering[$counter], $counter > 0 && $currDepth == 1);
             if ($writeFieldMark) {
                 $writeFieldMark = false;
             }
+            $counter++;
         }
 
         $xmlWriter->startElement('w:p');
