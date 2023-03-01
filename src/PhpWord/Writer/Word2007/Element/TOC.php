@@ -108,7 +108,7 @@ class TOC extends AbstractElement
             $styleWriter->write();
         }
         $xmlWriter->startElement('w:t');
-        $this->writeText($title->getText());
+        $this->writeText("{$itemNumber}. {$title->getText()}");
         $xmlWriter->endElement(); // w:t
         $xmlWriter->endElement(); // w:r
 
