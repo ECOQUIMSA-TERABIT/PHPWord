@@ -63,6 +63,44 @@ class TOC extends AbstractElement
     }
 
     /**
+     * Determine the numbering of the titles and subtitles in the TOC.
+     * 
+     * @param array $titles Array of titles and subtitles
+     * @return array Numbering of the titles and subtitles
+     */
+    private function getNumbering(array $titles)
+    {
+        $numbering = [];
+        $counter = 0;
+        $prevDepth = 1;
+        $prevLevel = "1";
+
+        foreach ($titles as $title) {
+            $currDepth = $title->getDepth();
+
+            if ($currDepth === 1) {
+                $counter++;
+                $prevLevel = (string) $counter;
+            } else {
+                if ($currDepth >= $prevDepth) {
+                    // Get the last character of the previous level and add a .1 to it.
+                    // If $prevLevel has length 1, just append a .1 to it.
+                    $prevLevel = substr($prevLevel, -1) === "." ? $prevLevel . "1" : (string) ((float) $prevLevel + 0.1);
+                } else {
+                    // If the current depth is less than the previous one, we need to remove the last level of the previous level.
+                    // For example, if the previous level is 1.1.1, and the current depth is 2, the new level should be 1.2
+                    $prevLevel = implode(".", array_slice(explode(".", $prevLevel), 0, $currDepth - 1)) . "." . (string) ((float) substr($prevLevel, -1) + 1);
+                }
+            }
+
+            $prevDepth = $currDepth;
+            array_push($numbering, $prevLevel);
+        }
+
+        return $numbering;
+    }
+
+    /**
      * Write title
      *
      * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
