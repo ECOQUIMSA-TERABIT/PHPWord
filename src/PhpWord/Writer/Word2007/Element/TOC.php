@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of PHPWord - A pure PHP library for reading and writing
  * word processing documents.
@@ -44,12 +45,17 @@ class TOC extends AbstractElement
 
         $titles = $element->getTitles();
         $writeFieldMark = true;
+        $numbering = $this->getNumbering($titles);
+        $counter = 0;
 
         foreach ($titles as $title) {
-            $this->writeTitle($xmlWriter, $element, $title, $writeFieldMark);
+            $currDepth = $title->getDepth();
+            // Write a new line before the title if it is not the first one and it's not a subtitle (AKA depth == 1)
+            $this->writeTitle($xmlWriter, $element, $title, $writeFieldMark, $numbering[$counter], $counter > 0 && $currDepth == 1);
             if ($writeFieldMark) {
                 $writeFieldMark = false;
             }
+            $counter++;
         }
 
         $xmlWriter->startElement('w:p');
@@ -62,20 +68,68 @@ class TOC extends AbstractElement
     }
 
     /**
+     * Determine the numbering of the titles and subtitles in the TOC.
+     * 
+     * @param array $titles Array of titles and subtitles
+     * @return array Numbering of the titles and subtitles
+     */
+    private function getNumbering(array $titles)
+    {
+        $numbering = [];
+        $counter = 0;
+        $prevDepth = 1;
+        $prevLevel = "1";
+
+        foreach ($titles as $title) {
+            $currDepth = $title->getDepth();
+
+            if ($currDepth === 1) {
+                $counter++;
+                $prevLevel = (string) $counter;
+            } else {
+                if ($currDepth >= $prevDepth) {
+                    // Get the last character of the previous level and add a .1 to it.
+                    // If $prevLevel has length 1, just append a .1 to it.
+                    $prevLevel = substr($prevLevel, -1) === "." ? $prevLevel . "1" : (string) ((float) $prevLevel + 0.1);
+                } else {
+                    // If the current depth is less than the previous one, we need to remove the last level of the previous level.
+                    // For example, if the previous level is 1.1.1, and the current depth is 2, the new level should be 1.2
+                    $prevLevel = implode(".", array_slice(explode(".", $prevLevel), 0, $currDepth - 1)) . "." . (string) ((float) substr($prevLevel, -1) + 1);
+                }
+            }
+
+            $prevDepth = $currDepth;
+            array_push($numbering, $prevLevel);
+        }
+
+        return $numbering;
+    }
+
+    /**
      * Write title
      *
      * @param \PhpOffice\PhpWord\Shared\XMLWriter $xmlWriter
      * @param \PhpOffice\PhpWord\Element\TOC $element
      * @param \PhpOffice\PhpWord\Element\Title $title
      * @param bool $writeFieldMark
+     * @param string $itemNumber
+     * @param bool $writeNewLineBefore
      */
-    private function writeTitle(XMLWriter $xmlWriter, TOCElement $element, $title, $writeFieldMark)
+    private function writeTitle(XMLWriter $xmlWriter, TOCElement $element, $title, $writeFieldMark, string $itemNumber, bool $writeNewLineBefore = false)
     {
         $tocStyle = $element->getStyleTOC();
         $fontStyle = $element->getStyleFont();
         $isObject = ($fontStyle instanceof Font) ? true : false;
         $rId = $title->getRelationId();
         $indent = ($title->getDepth() - 1) * $tocStyle->getIndent();
+
+        if ($writeNewLineBefore) {
+            // Add a new line character
+            $xmlWriter->startElement('w:p');
+            $xmlWriter->startElement('w:r');
+            $xmlWriter->endElement(); // w:r
+            $xmlWriter->endElement(); // w:p
+        }
 
         $xmlWriter->startElement('w:p');
 
@@ -97,7 +151,7 @@ class TOC extends AbstractElement
             $styleWriter->write();
         }
         $xmlWriter->startElement('w:t');
-        $this->writeText($title->getText());
+        $this->writeText("{$itemNumber}. {$title->getText()}");
         $xmlWriter->endElement(); // w:t
         $xmlWriter->endElement(); // w:r
 
