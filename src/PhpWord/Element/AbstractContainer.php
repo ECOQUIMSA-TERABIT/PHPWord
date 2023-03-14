@@ -100,6 +100,10 @@ abstract class AbstractContainer extends AbstractElement
             // @todo Remove the `$count` parameter in 1.0.0 to make this element similiar to other elements?
             if ($element == 'TextBreak') {
                 list($count, $fontStyle, $paragraphStyle) = array_pad($args, 3, null);
+
+                // If the length of $fontStyle is 0, copy the value of $paragraphStyle to $fontStyle
+                $fontStyle = (is_array($fontStyle) && count($fontStyle) == 0) ? $paragraphStyle : $fontStyle;
+
                 if ($count === null) {
                     $count = 1;
                 }
