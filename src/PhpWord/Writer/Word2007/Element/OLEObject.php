@@ -52,80 +52,15 @@ class OLEObject extends AbstractElement
         $this->writeCommentRangeStart();
 
         $xmlWriter->startElement('w:r');
-        $xmlWriter->startElement('w:object');
-        $xmlWriter->writeAttribute('w:dxaOrig', '15382');
-        $xmlWriter->writeAttribute('w:dyaOrig', '5771');
-        $xmlWriter->writeAttribute('w14:anchorId', '354C751A');
-
-        $xmlWriter->startElement('v:shapetype');
-        $xmlWriter->writeAttribute('id', '_x0000_t75');
-        $xmlWriter->writeAttribute('coordsize', '21600,21600');
-        $xmlWriter->writeAttribute('o:spt', $shapeId);
-        $xmlWriter->writeAttribute('o:preferrelative', 't');
-        $xmlWriter->writeAttribute('path', 'm@4@5l@4@11@9@11@9@5xe');
-        $xmlWriter->writeAttribute('filled', 'f');
-        $xmlWriter->writeAttribute('stroked', 'f');
-        $xmlWriter->startElement('v:stroke');
-        $xmlWriter->writeAttribute('joinstyle', 'miter');
-        $xmlWriter->endElement();
-        $xmlWriter->startElement('v:formulas');
-
-
-        $xmlWriter->startElement('v:f');
-        $xmlWriter->writeAttribute('eqn', 'if lineDrawn pixelLineWidth 0');
-        $xmlWriter->endElement();
-        $xmlWriter->startElement('v:f');
-        $xmlWriter->writeAttribute('eqn', 'sum @0 1 0');
-        $xmlWriter->endElement();
-        $xmlWriter->startElement('v:f');
-        $xmlWriter->writeAttribute('eqn', 'sum 0 0 @1');
-        $xmlWriter->endElement();
-        $xmlWriter->startElement('v:f');
-        $xmlWriter->writeAttribute('eqn', 'prod @2 1 2');
-        $xmlWriter->endElement();
-        $xmlWriter->startElement('v:f');
-        $xmlWriter->writeAttribute('eqn', 'prod @3 21600 pixelWidth');
-        $xmlWriter->endElement();
-        $xmlWriter->startElement('v:f');
-        $xmlWriter->writeAttribute('eqn', 'prod @3 21600 pixelHeight');
-        $xmlWriter->endElement();
-        $xmlWriter->startElement('v:f');
-        $xmlWriter->writeAttribute('eqn', 'sum @0 0 1');
-        $xmlWriter->endElement();
-        $xmlWriter->startElement('v:f');
-        $xmlWriter->writeAttribute('eqn', 'prod @6 1 2');
-        $xmlWriter->endElement();
-        $xmlWriter->startElement('v:f');
-        $xmlWriter->writeAttribute('eqn', 'prod @7 21600 pixelWidth');
-        $xmlWriter->endElement();
-        $xmlWriter->startElement('v:f');
-        $xmlWriter->writeAttribute('eqn', 'sum @8 21600 0');
-        $xmlWriter->endElement();
-        $xmlWriter->startElement('v:f');
-        $xmlWriter->writeAttribute('eqn', 'prod @7 21600 pixelHeight');
-        $xmlWriter->endElement();
-        $xmlWriter->startElement('v:f');
-        $xmlWriter->writeAttribute('eqn', 'sum @10 21600 0');
-        $xmlWriter->endElement();
-        $xmlWriter->fullEndElement();
-        $xmlWriter->startElement('v:path');
-        $xmlWriter->writeAttribute('o:extrusionok', 'f');
-        $xmlWriter->writeAttribute('gradientshapeok', 't');
-        $xmlWriter->writeAttribute('o:connecttype', 'rect');
-        $xmlWriter->endElement();
-
-        $xmlWriter->startElement('o:lock');
-        $xmlWriter->writeAttribute('v:ext', 'edit');
-        $xmlWriter->writeAttribute('aspectratio', 't');
-        $xmlWriter->endElement();
-        $xmlWriter->fullEndElement();
-
-
-        // Icon
+    	$xmlWriter->startElement('w:object');
+        $xmlWriter->writeAttribute('w:dxaOrig','10944' );
+        $xmlWriter->writeAttribute('w:dyaOrig', '4090');
+ $xmlWriter->writeAttribute('w14:anchorId', '354C751A');
+// Icon
         $xmlWriter->startElement('v:shape');
         $xmlWriter->writeAttribute('id', $shapeId);
         $xmlWriter->writeAttribute('type', '#_x0000_t75');
-        $xmlWriter->writeAttribute('style', 'width:668.4pt;height:229.5pt;mso-wrap-distance-right:0pt');
+        $xmlWriter->writeAttribute('style', 'width:445.2pt;height:162.6pt');
         $xmlWriter->writeAttribute('o:ole', '');
 
         $xmlWriter->startElement('v:imagedata');
@@ -146,6 +81,8 @@ class OLEObject extends AbstractElement
         $xmlWriter->endElement(); // o:OLEObject
 
         $xmlWriter->endElement(); // w:object
+
+
         $xmlWriter->endElement(); // w:r
 
         $this->endElementP(); // w:p
